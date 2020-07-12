@@ -146,15 +146,15 @@ false);
       // Use the existing insertHtml function for that purpose. Look through this code for an example
       // of how to do that.
       // ....
-      // for (var i = 0; i < categories,length; i++) {
-      // var html = homeHtml;
-      // var name = "" + categories[i].name;
-      // var short_name = categories[i].short_name;
-      // html = 
-      //   insertProperty(html, "name", name);
-      // html = 
-      //   insertProperty(html, "short_name", short_name);
-      // finalHtml += html;
+      for (var i = 0; i < categories,length; i++) {
+      var html = homeHtml;
+      var name = "" + categories[i].name;
+      var short_name = categories[i].short_name;
+      html = 
+        insertProperty(html, "name", name);
+      html = 
+        insertProperty(html, "short_name", short_name);
+      finalHtml += html;
     },
     false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
 }
