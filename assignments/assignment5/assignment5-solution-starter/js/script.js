@@ -84,11 +84,8 @@ showLoading("#main-content");
 $ajaxUtils.sendGetRequest(
   allCategoriesUrl,
   // function (allCategoriesUrl) {
-    dc.loadHomeView = function () {
-    $ajaxUtils.sendGetRequest(
-      "#main-content",
-      allCategoriesUrl,
-      buildAndShowHomeHTML);
+    dc.loadHomeView = function (allCategoriesUrl) {
+      showLoading("#main-content");
   }, // ***** <---- TODO: STEP 1: Substitute [...] ******
   true); // Explicitly setting the flag to get JSON from server processed into an object literal
 });
@@ -108,13 +105,7 @@ function buildAndShowHomeHTML (categories) {
       // Pay attention to what type of data that function returns vs what the chosenCategoryShortName
       // variable's name implies it expects.
       // var chosenCategoryShortName = ....
-        //  var chosenCategoryShortName = function () {
-        //    buildAndShowHomeHTML (
-        //     allCategoriesUrl,
-        //     categories,
-        //     homeHtml);
-        //     insertHtml("#main-content",chosenCategoryShortName)
-        //  };
+
         var chosenCategoryShortName = function () {
           buildCategoriesViewHtml(categories,
             homeHtml);
@@ -134,28 +125,18 @@ false);
       // it into the home html snippet.
       //
       // var homeHtmlToInsertIntoMainPage = ....
-        // var homeHtmlToInsertIntoMainPage = categoriesTitleHtml;
-        var homeHtmlToInsertIntoMainPage = function () {
-          buildCategoriesViewHtml(categories,
-            homeHtml);
-        insertHtml("#main-content", chosenCategoryShortName);
-},
-false);
+
+        var homeHtmlToInsertIntoMainPage = 
+        buildhomeHtmlToInsertIntoMainPage(categories,
+                                          homeHtml)
 
       // TODO: STEP 4: Insert the the produced HTML in STEP 3 into the main page
       // Use the existing insertHtml function for that purpose. Look through this code for an example
       // of how to do that.
       // ....
-      for (var i = 0; i < categories,length; i++) {
-      var html = homeHtml;
-      var name = "" + categories[i].name;
-      var short_name = categories[i].short_name;
-      html = 
-        insertProperty(html, "name", name);
-      html = 
-        insertProperty(html, "short_name", short_name);
-      finalHtml += html;
-    },
+
+          insertHtml("#main-content", homeHtmlToInsertIntoMainPage)
+         };
     false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
 }
 
